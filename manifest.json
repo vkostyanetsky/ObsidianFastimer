@@ -1,9 +1,9 @@
 {
 	"id": "obsidian-fastimer",
-	"name": "Obsidian Fastimer",
+	"name": "Fastimer",
 	"version": "1.0.0",
 	"minAppVersion": "1.5.3",
-	"description": "Obsidian plugin to track fasts.",
+	"description": "A fasting tracker for Obsidian.",
 	"author": "vkostyanetsky",
 	"authorUrl": "https://github.com/vkostyanetsky/ObsidianFastimer",
 	"isDesktopOnly": false

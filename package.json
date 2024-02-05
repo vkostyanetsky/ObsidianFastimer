@@ -1,7 +1,7 @@
 {
 	"name": "obsidian-fastimer",
 	"version": "1.0.0",
-	"description": "Obsidian plugin to track fasts.",
+	"description": "A fasting tracker for Obsidian.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
