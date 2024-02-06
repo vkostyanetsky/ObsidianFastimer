@@ -8,8 +8,10 @@ The idea is simple: when you start a new fast, you add a `fastimer` block in a n
 
 For instance:
 
+```
 ```fastimer
 2024-02-06 18:50
+```
 ```
 
 The plugin takes it and shows elapsed time, remaining time, and something like a progress bar to visualize your spilled blood, sweat, and tears :)
