@@ -3,7 +3,7 @@
 	"name": "Fastimer",
 	"version": "1.0.0",
 	"minAppVersion": "1.5.3",
-	"description": "A fasting tracker for Obsidian.",
+	"description": "A fasting tracker plugin for Obsidian.",
 	"author": "vkostyanetsky",
 	"authorUrl": "https://github.com/vkostyanetsky/ObsidianFastimer",
 	"isDesktopOnly": false
