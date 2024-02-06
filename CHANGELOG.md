@@ -5,4 +5,4 @@
 ### Added
 
 * Basic fasts management (to start, to stop, to set length).
-* Providing a user various information about an active fast (length, elapsed time, remaining time, etc.).
+* Various information about a fast (elapsed time, remaining time, etc.).
