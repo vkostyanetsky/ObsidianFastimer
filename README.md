@@ -41,6 +41,7 @@ Everything above updates when a block is being rendered. To trigger this, you ca
 
 To mark an active fast as finished, you can add the date and time of the moment to the same block. 
 
+```
 ```fastimer
 2024-02-06 18:50
 2024-02-07 15:00
@@ -54,6 +55,7 @@ It is assumed that the length of a regular fast is 16 hours, since it is pretty 
 
 Below, we are going to fast for 18 hours:
 
+```
 ```fastimer
 18
 2024-02-06 18:50
