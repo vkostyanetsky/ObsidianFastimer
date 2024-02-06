@@ -400,9 +400,6 @@ export default class Fastimer extends Plugin {
 
     private timestampsDifference(timestamp1: number, timestamp2: number) {
         
-        console.log(timestamp1)
-        console.log(timestamp2)
-
         let seconds = timestamp2 - timestamp1
         let hours = Math.floor(seconds / 3600)
         let minutes = Math.floor(
