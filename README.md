@@ -12,7 +12,6 @@ For instance:
 ```fastimer
 2024-02-06 18:50
 ```
-```
 
 The plugin takes it and shows elapsed time, remaining time, and something like a progress bar to visualize your spilled blood, sweat, and tears :)
 
