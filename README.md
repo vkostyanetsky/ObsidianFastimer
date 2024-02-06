@@ -49,7 +49,7 @@ To mark an active fast as finished, you can add the date and time of the moment 
 
 ### How do I set a fasting interval's length?
 
-It is assumed that the length of a regular fast is 16 hours. You can change the default value in the plugin's settings or set it directly for one specific fast. 
+It is assumed that the length of a regular fast is 16 hours, since it is pretty popular. However, you can change the default value in the plugin's settings or set it directly for one specific fast. 
 
 Below, we are going to fast for 18 hours:
 
