@@ -3,7 +3,9 @@ import {
     Plugin,
     PluginSettingTab,
     Setting,
-    MarkdownPostProcessorContext
+    MarkdownPostProcessorContext,
+    Editor,
+    MarkdownView
 } from 'obsidian';
 
 interface FastimerSettings {
@@ -44,6 +46,17 @@ export default class Fastimer extends Plugin {
         await this.loadSettings();
 
 		this.addSettingTab(new FastimerSettingTab(this.app, this));
+
+		this.addCommand({
+			id: 'fastimer-insert-fasting-tracker',
+			name: 'Insert fasting tracker',
+			editorCallback: (editor: Editor, view: MarkdownView) => {
+
+                let startDate = this.timestampToString(this.now())
+                
+				editor.replaceSelection("```fastimer\n" + startDate + "\n```");
+			}
+		});
 
         this.registerMarkdownCodeBlockProcessor("fastimer", async (src, el, ctx) => {
 
@@ -385,7 +398,7 @@ export default class Fastimer extends Plugin {
 
     private timestampToString(ts: number) {
 
-        return new Date(ts * 1000).toLocaleString(
+        let result = new Date(ts * 1000).toLocaleString(
             "en-CA", 
             {
                 year: 'numeric',
@@ -396,6 +409,8 @@ export default class Fastimer extends Plugin {
                 minute:'2-digit',
             }
         )
+
+        return result.replace(",", "")
     }
 
     private timestampsDifference(timestamp1: number, timestamp2: number) {
