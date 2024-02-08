@@ -1,9 +1,9 @@
 {
 	"id": "fastimer",
 	"name": "Fastimer",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"minAppVersion": "1.5.3",
-	"description": "A fasting tracker plugin for Obsidian.",
+	"description": "Intermittent fasting tracker.",
 	"author": "vkostyanetsky",
 	"authorUrl": "https://github.com/vkostyanetsky",
 	"isDesktopOnly": false

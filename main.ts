@@ -48,7 +48,7 @@ export default class Fastimer extends Plugin {
 		this.addSettingTab(new FastimerSettingTab(this.app, this));
 
 		this.addCommand({
-			id: 'fastimer-insert-fasting-tracker',
+			id: 'insert-fasting-tracker',
 			name: 'Insert fasting tracker',
 			editorCallback: (editor: Editor, view: MarkdownView) => {
 
@@ -440,7 +440,7 @@ class FastimerSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName('Regular Fast Length')
+			.setName('Regular fast length')
 			.setDesc('This value is used if the duration is not specified directly.')
 			.addText(text => text
 				.setPlaceholder(DEFAULT_SETTINGS.regularFastLength.toString())
