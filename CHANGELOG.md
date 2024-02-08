@@ -4,7 +4,11 @@
 
 ### Added
 
-* "Insert fasting tracker" command
+* "Insert fasting tracker" command.
+
+### Changed
+
+* Minor interface changes to comply with developer's guidelines.
 
 ## 1.0.0 - 2024-02-07
 
