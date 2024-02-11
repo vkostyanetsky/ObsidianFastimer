@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 - ?
+
+### Added
+
+* "Insert current date & time" command.
+
 ## 1.1.0 - 2024-02-08
 
 ### Added

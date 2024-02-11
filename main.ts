@@ -58,6 +58,17 @@ export default class Fastimer extends Plugin {
 			}
 		});
 
+		this.addCommand({
+			id: 'insert-current-date-and-time',
+			name: 'Insert current date & time',
+			editorCallback: (editor: Editor, view: MarkdownView) => {
+
+                let startDate = this.timestampToString(this.now())
+                
+				editor.replaceSelection(startDate);
+			}
+		});
+
         this.registerMarkdownCodeBlockProcessor("fastimer", async (src, el, ctx) => {
 
             let fast: Fast | null = null;
