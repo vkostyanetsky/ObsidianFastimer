@@ -42,7 +42,7 @@ Remaining:    14h 23m
 
 Everything above updates when a block is being rendered. To trigger this, you can edit the block or reopen the note.
 
-To mark an active fast as finished, you can add the date and time of the moment to the same block. 
+To mark an active fast as finished, you can add the date and time of the moment to the same block. By the way, there is "Insert current date & time" command to do so.
 
 ````
 ```fastimer
