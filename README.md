@@ -8,10 +8,11 @@ The idea is simple: when you start a new fast, you add a `fastimer` block in a n
 
 For instance:
 
-```
+````
 ```fastimer
 2024-02-06 18:50
 ```
+````
 
 You can do this using the "Insert fasting tracker" command or, well, you know. Manually.
 
@@ -43,11 +44,12 @@ Everything above updates when a block is being rendered. To trigger this, you ca
 
 To mark an active fast as finished, you can add the date and time of the moment to the same block. 
 
-```
+````
 ```fastimer
 2024-02-06 18:50
 2024-02-07 15:00
 ```
+````
 
 ## 🤔 Questions
 
@@ -57,8 +59,9 @@ It is assumed that the length of a regular fast is 16 hours, since it is pretty 
 
 Below, we are going to fast for 18 hours:
 
-```
+````
 ```fastimer
 18
 2024-02-06 18:50
 ```
+````
