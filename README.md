@@ -4,7 +4,7 @@ It is a plugin for [Obsidian](https://obsidian.md) designed to help you monitor 
 
 ## 🙂 How to use it?
 
-The idea is simple: when you start a new fast, you add a `fastimer` block in a note where you set a date and time when you have started. 
+The idea is simple: when you start a new fast and want to track it, you add a `fastimer` code block. In the block, you set a date and time when you started. You can do this using the "Insert fasting tracker" command or, well, you know. Manually.
 
 For instance:
 
@@ -14,9 +14,7 @@ For instance:
 ```
 ````
 
-You can do this using the "Insert fasting tracker" command or, well, you know. Manually.
-
-The plugin takes the block and shows elapsed time, remaining time, and something like a progress bar to visualize your spilled blood, sweat, and tears :)
+The plugin takes the code block and shows elapsed time, remaining time, and something like a progress bar to visualize your spilled blood, sweat, and tears :)
 
 Here is an example:
 
