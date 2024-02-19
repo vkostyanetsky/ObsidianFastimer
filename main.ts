@@ -409,19 +409,25 @@ export default class Fastimer extends Plugin {
 
     private timestampToString(ts: number) {
 
-        let result = new Date(ts * 1000).toLocaleString(
-            "en-CA", 
+        let dateStrings = new Date(ts * 1000).toLocaleString(
+            "en-UK", 
             {
                 year: 'numeric',
                 month: '2-digit',
                 day: '2-digit',
                 hour: '2-digit',
                 hour12: false,
-                minute:'2-digit',
+                minute: '2-digit',
+                hourCycle: 'h23',
             }
-        )
+        ).split(", ")
 
-        return result.replace(",", "")
+        let day     = dateStrings[0].substring(0, 2);
+        let month   = dateStrings[0].substring(3, 5);
+        let year    = dateStrings[0].substring(6, 10); 
+        let time    = dateStrings[1]
+
+        return `${year}-${month}-${day} ${time}`
     }
 
     private timestampsDifference(timestamp1: number, timestamp2: number) {
