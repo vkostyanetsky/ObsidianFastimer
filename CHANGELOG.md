@@ -6,6 +6,10 @@
 
 * "Insert current date & time" command.
 
+### Changed
+
+* Removed unused package dependencies
+
 ## 1.1.0 - 2024-02-08
 
 ### Added
