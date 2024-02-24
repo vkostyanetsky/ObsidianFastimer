@@ -27,14 +27,14 @@ export default class FastsParser {
             status: FastStatus.Inactive,
         }
 
-        FastsParser.initFastFromContent(fast, content)
+        this.initFastFromContent(fast, content)
         
-        FastsParser.fillFastPlannedLength(fast, settings)
-        FastsParser.fillFastCurrentLength(fast)
+        this.fillFastPlannedLength(fast, settings)
+        this.fillFastCurrentLength(fast)
 
-        FastsParser.fillFastPlannedEndTimestamp(fast)
+        this.fillFastPlannedEndTimestamp(fast)
 
-        FastsParser.fillFastStatus(fast)
+        this.fillFastStatus(fast)
 
         return fast;
     }    
