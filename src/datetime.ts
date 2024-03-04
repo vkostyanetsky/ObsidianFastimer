@@ -1,3 +1,5 @@
+import { moment } from "obsidian"
+
 export default class DateTime {
 
     public static now() {
@@ -12,25 +14,7 @@ export default class DateTime {
     
     public static timestampToString(ts: number) {
     
-        let dateStrings = new Date(ts * 1000).toLocaleString(
-            "en-UK", 
-            {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                hour12: false,
-                minute: '2-digit',
-                hourCycle: 'h23',
-            }
-        ).split(", ")
-    
-        let day     = dateStrings[0].substring(0, 2);
-        let month   = dateStrings[0].substring(3, 5);
-        let year    = dateStrings[0].substring(6, 10); 
-        let time    = dateStrings[1]
-    
-        return `${year}-${month}-${day} ${time}`
+        return moment(new Date(ts * 1000)).format("YYYY-MM-DD HH:mm")
     }
     
     public static timestampsDifference(timestamp1: number, timestamp2: number) {
