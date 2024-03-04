@@ -87,10 +87,10 @@ export default class FastimerCodeBlock {
         // Calculating start timestamps:
 
         let anabolicZoneTimestamp = fast.startTimestamp
-        let catabolicZoneTimestamp = anabolicZoneTimestamp + DateTime.secondsInHours(4)
-        let fatBurningZoneTimestamp = catabolicZoneTimestamp + DateTime.secondsInHours(12)
-        let ketosisZoneTimestamp = fatBurningZoneTimestamp + DateTime.secondsInHours(8)
-        let deepKetosisZoneTimestamp = ketosisZoneTimestamp + DateTime.secondsInHours(48)
+        let catabolicZoneTimestamp = anabolicZoneTimestamp + DateTime.millisecondsInHours(4)
+        let fatBurningZoneTimestamp = catabolicZoneTimestamp + DateTime.millisecondsInHours(12)
+        let ketosisZoneTimestamp = fatBurningZoneTimestamp + DateTime.millisecondsInHours(8)
+        let deepKetosisZoneTimestamp = ketosisZoneTimestamp + DateTime.millisecondsInHours(48)
 
         // Creating zones:
 

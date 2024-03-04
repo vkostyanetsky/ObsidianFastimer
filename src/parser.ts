@@ -50,14 +50,14 @@ export default class FastsParser {
                 let value = parseInt(line)
 
                 if (! isNaN(value) && fast.plannedLength == 0) {
-                    fast.plannedLength = DateTime.secondsInHours(value)
+                    fast.plannedLength = DateTime.millisecondsInHours(value)
                 }
             }
             else if (line.match(/^\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}$/)) {
                 let value = Date.parse(line)
 
                 if (! isNaN(value)) {
-                    value = value / 1000
+                    // value = value / 1000
 
                     if (fast.startTimestamp == 0) {
                         fast.startTimestamp = value
@@ -79,13 +79,13 @@ export default class FastsParser {
                 fast.plannedLength = DEFAULT_SETTINGS.regularFastLength
             }
 
-            fast.plannedLength = DateTime.secondsInHours(fast.plannedLength)
+            fast.plannedLength = DateTime.millisecondsInHours(fast.plannedLength)
         }
     }
 
     private static fillFastCurrentLength(fast: Fast) {
 
-        let finished = fast.currentEndTimestamp == 0 ? Date.now() / 1000 : fast.currentEndTimestamp
+        let finished = fast.currentEndTimestamp == 0 ? Date.now() : fast.currentEndTimestamp
 
         fast.currentLength = finished - fast.startTimestamp
     }
