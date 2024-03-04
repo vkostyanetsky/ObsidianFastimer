@@ -1,7 +1,7 @@
 import { 
     Plugin,
     Editor,
-    MarkdownView
+    MarkdownView,
 } from 'obsidian';
 
 import { 
@@ -68,7 +68,7 @@ export default class Fastimer extends Plugin {
                 const root = el.createEl("div");
                 const body = root.createEl("div");
 
-                await FastimerCodeBlock.renderFast(fast, body, ctx);
+                await FastimerCodeBlock.renderFast(this, fast, body, ctx);
             }
             catch (error) 
             {

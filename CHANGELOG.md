@@ -8,7 +8,8 @@
 
 ### Changed
 
-* Removed unused package dependencies
+* Removed unused package dependencies.
+* Code block now uses callouts to show the state of a fast: `summary` for ongoing one, `success` for completed, and `failed` for, well, you know. For a fast that hasn't been successful.
 
 ## 1.1.0 - 2024-02-08
 
