@@ -52,10 +52,10 @@ export default class FastimerCodeBlock {
     private static async addLineWithFastTitle(lines: string[], fast: Fast) {
         
         let text = new Map<FastStatus, string>([
-            [FastStatus.Inactive,  `> [!abstract] INACTIVE FAST (${fast.plannedLengthInHours}h)`],
-            [FastStatus.Active,    `> [!summary] ACTIVE FAST (${fast.plannedLengthInHours}h)`],
-            [FastStatus.Completed, `> [!success] COMPLETED FAST (${fast.plannedLengthInHours}h)`],
-            [FastStatus.Failed,    `> [!failure] FAILED FAST (${fast.plannedLengthInHours}h)`],
+            [FastStatus.Inactive,  `> [!abstract] INACTIVE FAST (${fast.plannedLengthInHours}H)`],
+            [FastStatus.Active,    `> [!summary] ACTIVE FAST (${fast.plannedLengthInHours}H)`],
+            [FastStatus.Completed, `> [!success] COMPLETED FAST (${fast.plannedLengthInHours}H)`],
+            [FastStatus.Failed,    `> [!failure] FAILED FAST (${fast.plannedLengthInHours}H)`],
         ]).get(fast.status);
 
         if (text === undefined) text = "<?>"
@@ -156,7 +156,7 @@ export default class FastimerCodeBlock {
         let done = "|".repeat(done_len)
         let tail = Math.floor(percent)
     
-        lines.push(`> \`${done}${left} ${tail}%\``)
+        lines.push(`> \`${done}${left}\` ${tail}%`)
     }
 
     private static addActualDuration(lines: string[], fast: Fast, endTimestamp: number) {
