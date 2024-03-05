@@ -7,6 +7,7 @@ export const enum FastStatus {
 
 export interface Fast {
     startTimestamp: number;
+    plannedLengthInHours: number;
     plannedLength: number;
     currentLength: number;  
     plannedEndTimestamp: number;    

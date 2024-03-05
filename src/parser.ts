@@ -20,6 +20,7 @@ export default class FastsParser {
 
         const fast: Fast = {
             startTimestamp: 0,
+            plannedLengthInHours: 0,
             plannedLength: 0,
             currentLength: 0,
             plannedEndTimestamp: 0,
@@ -29,12 +30,16 @@ export default class FastsParser {
 
         this.initFastFromContent(fast, content)
         
-        this.fillFastPlannedLength(fast, settings)
+        this.fillFastPlannedLengthInHours(fast, settings)
+
+        this.fillFastPlannedLength(fast)
         this.fillFastCurrentLength(fast)
 
         this.fillFastPlannedEndTimestamp(fast)
 
         this.fillFastStatus(fast)
+
+        console.log(fast)
 
         return fast;
     }    
@@ -49,15 +54,14 @@ export default class FastsParser {
             if (line.match(/^\d*$/)) {
                 let value = parseInt(line)
 
-                if (! isNaN(value) && fast.plannedLength == 0) {
-                    fast.plannedLength = DateTime.HoursToMs(value)
+                if (! isNaN(value) && fast.plannedLengthInHours == 0) {
+                    fast.plannedLengthInHours = value
                 }
             }
             else if (line.match(/^\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}$/)) {
                 let value = Date.parse(line)
 
                 if (! isNaN(value)) {
-                    // value = value / 1000
 
                     if (fast.startTimestamp == 0) {
                         fast.startTimestamp = value
@@ -70,16 +74,21 @@ export default class FastsParser {
         })
     }
 
-    private static fillFastPlannedLength(fast: Fast, settings: FastimerSettings) {
+    private static fillFastPlannedLengthInHours(fast: Fast, settings: FastimerSettings) {
+
+        if (fast.plannedLengthInHours == 0) {
+            fast.plannedLengthInHours = settings.regularFastLength
+
+            if (fast.plannedLengthInHours == 0) {            
+                fast.plannedLengthInHours = DEFAULT_SETTINGS.regularFastLength
+            }
+        }
+    }
+
+    private static fillFastPlannedLength(fast: Fast) {
 
         if (fast.plannedLength == 0) {
-            fast.plannedLength = settings.regularFastLength
-
-            if (fast.plannedLength == 0) {            
-                fast.plannedLength = DEFAULT_SETTINGS.regularFastLength
-            }
-
-            fast.plannedLength = DateTime.HoursToMs(fast.plannedLength)
+            fast.plannedLength = DateTime.HoursToMs(fast.plannedLengthInHours)
         }
     }
 

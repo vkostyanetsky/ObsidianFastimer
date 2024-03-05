@@ -31,8 +31,7 @@ export default class FastimerCodeBlock {
 
             lines.push("> ")
 
-            this.addFastFrom(lines, fast)
-            this.addFastGoal(lines, fast)
+            this.addStartAndEnd(lines, fast)
 
             lines.push("> ")
 
@@ -44,26 +43,19 @@ export default class FastimerCodeBlock {
 
             lines.push("> ")
 
-            this.addFastElapsedTime(lines, fast, endTimestamp)
-
-            if (endTimestamp <= fast.plannedEndTimestamp) {
-                this.addFastRemainingTime(lines, fast, endTimestamp)
-            }
-            else {
-                this.addFastExtraTime(lines, fast, endTimestamp)
-            }
+            this.addActualDuration(lines, fast, endTimestamp)
         }
         
         MarkdownRenderer.render(plugin.app, lines.join("\n"), body, "", plugin)
     }
 
     private static async addLineWithFastTitle(lines: string[], fast: Fast) {
-
+        
         let text = new Map<FastStatus, string>([
-            [FastStatus.Inactive,  "> [!abstract] INACTIVE FAST"],
-            [FastStatus.Active,    "> [!summary] ACTIVE FAST"],
-            [FastStatus.Completed, "> [!success] COMPLETED FAST"],
-            [FastStatus.Failed,    "> [!failure] FAILED FAST"],
+            [FastStatus.Inactive,  `> [!abstract] INACTIVE FAST (${fast.plannedLengthInHours}h)`],
+            [FastStatus.Active,    `> [!summary] ACTIVE FAST (${fast.plannedLengthInHours}h)`],
+            [FastStatus.Completed, `> [!success] COMPLETED FAST (${fast.plannedLengthInHours}h)`],
+            [FastStatus.Failed,    `> [!failure] FAILED FAST (${fast.plannedLengthInHours}h)`],
         ]).get(fast.status);
 
         if (text === undefined) text = "<?>"
@@ -71,19 +63,13 @@ export default class FastimerCodeBlock {
         lines.push(text)
     }
 
-    private static async addFastFrom(lines: string[], fast: Fast) {
+    private static async addStartAndEnd(lines: string[], fast: Fast) {
              
         let from = DateTime.dateString(fast.startTimestamp)
-
-        lines.push(`> **From**: ${from}`)
-    }
-
-    private static async addFastGoal(lines: string[], fast: Fast) {
-
         let goal = DateTime.dateString(fast.plannedEndTimestamp)
 
-        lines.push(`> **Goal**: ${goal}`)
-    }    
+        lines.push(`> Starts **${from}**; ends **${goal}**.`)
+    }
 
     private static addFastingZones(lines: string[], fast: Fast, endTimestamp: number) {
 
@@ -141,7 +127,7 @@ export default class FastimerCodeBlock {
 
     private static addFastingZone(lines: string[], fast: Fast, zone: FastingZone, endTimestamp: number) {
 
-        let note_text = fast.currentEndTimestamp > 0 ? " ==← you were here==" : " ==← you are here=="
+        let note_text = fast.currentEndTimestamp > 0 ? " **← you were here**" : " **← you are here**"
         let note = 
             endTimestamp >= zone.startTimestamp 
             && 
@@ -151,7 +137,7 @@ export default class FastimerCodeBlock {
         
         let from = DateTime.dateString(zone.startTimestamp)
 
-        lines.push(`> ${zone.title}: ${from}${note}`)
+        lines.push(`> ${zone.title} zone starts ${from}${note}`)
     }
 
     private static async addFastProgressBar(lines: string[], fast: Fast, endTimestamp: number) {
@@ -166,35 +152,29 @@ export default class FastimerCodeBlock {
             
         let left_len = 40 - done_len
     
-        let left = "--".repeat(left_len)
-        let done = "||".repeat(done_len)
+        let left = "-".repeat(left_len)
+        let done = "|".repeat(done_len)
         let tail = Math.floor(percent)
     
-        lines.push(`> ${done}${left} ${tail}%`)
+        lines.push(`> \`${done}${left} ${tail}%\``)
     }
 
-    private static addFastElapsedTime(lines: string[], fast: Fast, endTimestamp: number) {
+    private static addActualDuration(lines: string[], fast: Fast, endTimestamp: number) {
 
         let timestamp1 = fast.startTimestamp
         let timestamp2 = fast.currentEndTimestamp == 0 ? endTimestamp : fast.currentEndTimestamp
          
         let difference = DateTime.timestampsDifference(timestamp1, timestamp2)
+        let postfix = ""
 
-        lines.push(`> **Elapsed time**: ${difference}`)
+        if (endTimestamp <= fast.plannedEndTimestamp) {
+            postfix = `remaining: **${DateTime.timestampsDifference(endTimestamp, fast.plannedEndTimestamp)}**`
+        }
+        else {
+            postfix = `extra: **${DateTime.timestampsDifference(fast.plannedEndTimestamp, endTimestamp)}**`
+        }
+
+        lines.push(`> Actual duration: **${difference}** (${postfix})`)
     }
-
-    private static addFastRemainingTime(lines: string[], fast: Fast, endTimestamp: number) {
-         
-        let difference = DateTime.timestampsDifference(endTimestamp, fast.plannedEndTimestamp)
-
-        lines.push(`> **Remaining**: ${difference}`)
-    }    
-
-    private static addFastExtraTime(lines: string[], fast: Fast, endTimestamp: number) {
-         
-        let difference = DateTime.timestampsDifference(fast.plannedEndTimestamp, endTimestamp)
-
-        lines.push(`> **Extra time**: ${difference}`)
-    }        
 
 }

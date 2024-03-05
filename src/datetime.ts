@@ -65,7 +65,7 @@ export default class DateTime {
     
         const dateMoment = moment(new Date(timestamp))
 
-        let result = dateMoment.format("YYYY-MM-DD HH:mm")
+        let result = dateMoment.format("YYYY-MM-DD, HH:mm")
 
         if (relative) {
             const dateString = this.relativeDateString(dateMoment)
