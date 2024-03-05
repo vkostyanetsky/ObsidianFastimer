@@ -60,10 +60,10 @@ export default class FastimerCodeBlock {
     private static async addLineWithFastTitle(lines: string[], fast: Fast) {
 
         let text = new Map<FastStatus, string>([
-            [FastStatus.Inactive,  "> [!abstract] Inactive fast"],
-            [FastStatus.Active,    "> [!summary] Active fast"],
-            [FastStatus.Completed, "> [!success] Completed fast"],
-            [FastStatus.Failed,    "> [!failure] Failed fast"],
+            [FastStatus.Inactive,  "> [!abstract] INACTIVE FAST"],
+            [FastStatus.Active,    "> [!summary] ACTIVE FAST"],
+            [FastStatus.Completed, "> [!success] COMPLETED FAST"],
+            [FastStatus.Failed,    "> [!failure] FAILED FAST"],
         ]).get(fast.status);
 
         if (text === undefined) text = "<?>"
@@ -73,14 +73,14 @@ export default class FastimerCodeBlock {
 
     private static async addFastFrom(lines: string[], fast: Fast) {
              
-        let from = DateTime.timestampToString(fast.startTimestamp)
+        let from = DateTime.dateString(fast.startTimestamp)
 
         lines.push(`> **From**: ${from}`)
     }
 
     private static async addFastGoal(lines: string[], fast: Fast) {
 
-        let goal = DateTime.timestampToString(fast.plannedEndTimestamp)
+        let goal = DateTime.dateString(fast.plannedEndTimestamp)
 
         lines.push(`> **Goal**: ${goal}`)
     }    
@@ -90,41 +90,41 @@ export default class FastimerCodeBlock {
         // Calculating start timestamps:
 
         let anabolicZoneTimestamp = fast.startTimestamp
-        let catabolicZoneTimestamp = anabolicZoneTimestamp + DateTime.millisecondsInHours(4)
-        let fatBurningZoneTimestamp = catabolicZoneTimestamp + DateTime.millisecondsInHours(12)
-        let ketosisZoneTimestamp = fatBurningZoneTimestamp + DateTime.millisecondsInHours(8)
-        let deepKetosisZoneTimestamp = ketosisZoneTimestamp + DateTime.millisecondsInHours(48)
+        let catabolicZoneTimestamp = anabolicZoneTimestamp + DateTime.HoursToMs(4)
+        let fatBurningZoneTimestamp = catabolicZoneTimestamp + DateTime.HoursToMs(12)
+        let ketosisZoneTimestamp = fatBurningZoneTimestamp + DateTime.HoursToMs(8)
+        let deepKetosisZoneTimestamp = ketosisZoneTimestamp + DateTime.HoursToMs(48)
 
         // Creating zones:
 
         let anabolicZone: FastingZone = {
             startTimestamp: anabolicZoneTimestamp,
             endTimestamp: catabolicZoneTimestamp - 1,
-            title: "1. **Anabolic**",
+            title: "1. Anabolic",
         }
 
         let catabolicZone: FastingZone = {
             startTimestamp: catabolicZoneTimestamp,
             endTimestamp: fatBurningZoneTimestamp - 1,
-            title: "2. **Catabolic**"
+            title: "2. Catabolic"
         }
 
         let fatBurningZone: FastingZone = {
             startTimestamp: fatBurningZoneTimestamp,
             endTimestamp: ketosisZoneTimestamp - 1,
-            title: "3. **Fat burning**"
+            title: "3. Fat burning"
         }
 
         let ketosisZone: FastingZone = {
             startTimestamp: ketosisZoneTimestamp,
             endTimestamp: deepKetosisZoneTimestamp - 1,
-            title: "4. **Ketosis**"
+            title: "4. Ketosis"
         }
 
         let deepKetosisZone: FastingZone = {
             startTimestamp: deepKetosisZoneTimestamp,
             endTimestamp: 0,
-            title: "5. **Deep ketosis**"
+            title: "5. Deep ketosis"
         }
 
         // Rendering:
@@ -149,9 +149,9 @@ export default class FastimerCodeBlock {
             ? note_text
             : ""
         
-        let from = DateTime.timestampToString(zone.startTimestamp)
+        let from = DateTime.dateString(zone.startTimestamp)
 
-        lines.push(`> ${zone.title} from ${from}${note}`)
+        lines.push(`> ${zone.title}: ${from}${note}`)
     }
 
     private static async addFastProgressBar(lines: string[], fast: Fast, endTimestamp: number) {
@@ -166,8 +166,8 @@ export default class FastimerCodeBlock {
             
         let left_len = 40 - done_len
     
-        let left = "-".repeat(left_len)
-        let done = "#".repeat(done_len)
+        let left = "--".repeat(left_len)
+        let done = "||".repeat(done_len)
         let tail = Math.floor(percent)
     
         lines.push(`> ${done}${left} ${tail}%`)

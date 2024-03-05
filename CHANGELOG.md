@@ -1,15 +1,15 @@
 # Changelog
 
-## 1.1.1 - ?
+## 1.1.1 - 2024-03-05
 
 ### Added
 
-* "Insert current date & time" command.
+* "Insert current date & time" command
 
 ### Changed
 
-* Removed unused package dependencies.
 * Code block now uses callouts to show the state of a fast: `summary` for an active one, `success` for a completed one, and `failed` for, well, you know. For a fast that hasn't been successful.
+* Code block now shows relative dates within three days of the current one.
 
 ## 1.1.0 - 2024-02-08
 

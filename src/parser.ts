@@ -50,7 +50,7 @@ export default class FastsParser {
                 let value = parseInt(line)
 
                 if (! isNaN(value) && fast.plannedLength == 0) {
-                    fast.plannedLength = DateTime.millisecondsInHours(value)
+                    fast.plannedLength = DateTime.HoursToMs(value)
                 }
             }
             else if (line.match(/^\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}$/)) {
@@ -79,7 +79,7 @@ export default class FastsParser {
                 fast.plannedLength = DEFAULT_SETTINGS.regularFastLength
             }
 
-            fast.plannedLength = DateTime.millisecondsInHours(fast.plannedLength)
+            fast.plannedLength = DateTime.HoursToMs(fast.plannedLength)
         }
     }
 
