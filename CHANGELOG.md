@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1 - ?
+
+### Changed
+
+* Made the code block more compact.
+
 ## 1.2.0 - 2024-03-05
 
 ### Added
