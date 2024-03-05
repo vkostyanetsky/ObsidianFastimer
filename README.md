@@ -18,25 +18,7 @@ The plugin takes the code block and shows elapsed time, remaining time, and some
 
 Here is an example:
 
-```
-ACTIVE FAST
-
-From: 2024-02-06, 18:50
-Goal: 2024-02-07, 10:50
-
-Fasting zones:
-
-1. Anabolic     2024-02-06, 18:50 ← you are here
-2. Catabolic    2024-02-06, 22:50
-3. Fat burning  2024-02-07, 10:50
-4. Ketosis      2024-02-07, 18:50
-5. Deep ketosis 2024-02-09, 18:50
-
-####----------------------------------- 10%
-
-Elapsed time: 1h 36m
-Remaining:    14h 23m
-```
+![Example](img/example-fast.png)
 
 Everything above updates when a block is being rendered. To trigger this, you can edit the block or reopen the note.
 
