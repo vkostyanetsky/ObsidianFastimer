@@ -34,7 +34,7 @@ export default class Fastimer extends Plugin {
 
                 let startDate = DateTime.dateString(DateTime.now(), false)
                 
-				editor.replaceSelection("```fastimer\n" + startDate + "\n```");
+				editor.replaceSelection(`\`\`\`fastimer\n${startDate}\n\`\`\``);
 			}
 		});
 
