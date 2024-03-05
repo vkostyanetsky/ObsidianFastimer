@@ -86,7 +86,7 @@ export default class DateTime {
             (seconds - (hours * 3600)) / 60
         )
     
-        return `${hours}h ${minutes}m`
+        return hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`
     }
 
 }
