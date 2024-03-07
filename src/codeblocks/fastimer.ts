@@ -161,7 +161,7 @@ export default class FastimerCodeBlock {
         let left_len = 40 - done_len
     
         let left = "-".repeat(left_len)
-        let done = "|".repeat(done_len)
+        let done = "#".repeat(done_len)
         let tail = Math.floor(percent)
     
         lines.push(`> \`${done}${left}\` ${tail}%`)
