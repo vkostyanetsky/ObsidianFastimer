@@ -1,3 +1,4 @@
+import { time } from "console"
 import { moment } from "obsidian"
 
 export default class DateTime {

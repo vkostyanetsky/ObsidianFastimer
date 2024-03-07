@@ -11,6 +11,7 @@ import {
     Fast,
     FastStatus
 } from '../types'
+import { DESTRUCTION } from 'dns';
 
 interface FastingZone {
     startTimestamp: number;
@@ -35,15 +36,15 @@ export default class FastimerCodeBlock {
 
             lines.push("> ")
 
-            this.addFastingZones(lines, fast, endTimestamp)
-
-            lines.push("> ")
-
-            this.addFastProgressBar(lines, fast, endTimestamp)
-
-            lines.push("> ")
-
             this.addActualDuration(lines, fast, endTimestamp)
+
+            lines.push("> ")
+
+            this.addFastProgressBar(lines, fast, endTimestamp)            
+
+            lines.push("> ")
+
+            this.addFastingZones(lines, fast, endTimestamp)
         }
         
         MarkdownRenderer.render(plugin.app, lines.join("\n"), body, "", plugin)
@@ -65,10 +66,13 @@ export default class FastimerCodeBlock {
 
     private static async addStartAndEnd(lines: string[], fast: Fast) {
              
-        let from = DateTime.dateString(fast.startTimestamp)
-        let goal = DateTime.dateString(fast.plannedEndTimestamp)
+        const fromVerb = this.dateVerb(fast.startTimestamp, "Started", "Will start")
+        const fromDate = DateTime.dateString(fast.startTimestamp)
 
-        lines.push(`> Starts **${from}**; ends **${goal}**.`)
+        const goalVerb = this.dateVerb(fast.plannedEndTimestamp, "should have completed", "should be completed")
+        const goalDate = DateTime.dateString(fast.plannedEndTimestamp)
+
+        lines.push(`> ${fromVerb} **${fromDate}**; ${goalVerb} **${goalDate}**.`)
     }
 
     private static addFastingZones(lines: string[], fast: Fast, endTimestamp: number) {
@@ -134,10 +138,14 @@ export default class FastimerCodeBlock {
             (endTimestamp < zone.endTimestamp || zone.endTimestamp == 0)
             ? note_text
             : ""
-        
-        let from = DateTime.dateString(zone.startTimestamp)
 
-        lines.push(`> ${zone.title} zone starts ${from}${note}`)
+        const from = DateTime.dateString(zone.startTimestamp)
+        const verb = 
+            endTimestamp < zone.startTimestamp && (fast.status == FastStatus.Completed || fast.status == FastStatus.Failed)
+            ? "would start"
+            : this.dateVerb(zone.startTimestamp, "started", "will start")
+
+        lines.push(`> ${zone.title} zone ${verb} ${from}${note}`)
     }
 
     private static async addFastProgressBar(lines: string[], fast: Fast, endTimestamp: number) {
@@ -161,6 +169,15 @@ export default class FastimerCodeBlock {
 
     private static addActualDuration(lines: string[], fast: Fast, endTimestamp: number) {
 
+        let prefix = ""
+
+        if (fast.status == FastStatus.Completed || fast.status == FastStatus.Failed) {
+
+            const endDate = DateTime.dateString(fast.currentEndTimestamp)
+
+            prefix = `Completed **${endDate}**. `
+        }
+
         let timestamp1 = fast.startTimestamp
         let timestamp2 = fast.currentEndTimestamp == 0 ? endTimestamp : fast.currentEndTimestamp
          
@@ -174,7 +191,12 @@ export default class FastimerCodeBlock {
             postfix = `extra: **${DateTime.timestampsDifference(fast.plannedEndTimestamp, endTimestamp)}**`
         }
 
-        lines.push(`> Actual duration: **${difference}** (${postfix})`)
+        lines.push(`> ${prefix}Duration: **${difference}** (${postfix})`)
+    }
+
+    private static dateVerb(timestamp: number, pastForm: string, futureForm: string) {
+
+        return timestamp > DateTime.now() ? futureForm : pastForm
     }
 
 }

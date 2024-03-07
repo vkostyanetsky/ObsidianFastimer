@@ -5,6 +5,7 @@
 ### Changed
 
 * Made the code block more compact.
+* Fixed verb forms in the code block.
 
 ## 1.2.0 - 2024-03-05
 
