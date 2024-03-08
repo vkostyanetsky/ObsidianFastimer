@@ -45,3 +45,11 @@ Below, we are going to fast for 18 hours:
 2024-02-06 18:50
 ```
 ````
+
+### Why not to use properties to store fast data?
+
+Something like `fast_started_at`, `fast_stopped_at`, `fast_length` properties in a daily note? Yeah, this idea came to my mind, but I have a few reasons not to do it. Here they are:
+
+1. You need a code block in a note to see a fast overview anyway, so it makes more sense to use the block to store the data it renders.
+2. Storing the data in a code block provides you with the opportunity to have one note for all the fasts you participate in case it is convenient for you.
+3. Adding several semantically connected properties to each daily note makes the flow more complex: you have to remember that they are related to each other. Unfortunately, at this moment, there is no property grouping feature in Obsidian.
