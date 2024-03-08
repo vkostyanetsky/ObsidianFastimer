@@ -12,6 +12,7 @@ import {
     FastStatus
 } from '../types'
 import { DESTRUCTION } from 'dns';
+import { posix } from 'path';
 
 interface FastingZone {
     startTimestamp: number;
@@ -150,7 +151,7 @@ export default class FastimerCodeBlock {
 
     private static async addFastProgressBar(lines: string[], fast: Fast, endTimestamp: number) {
 
-        let seconds_now = (endTimestamp - fast.startTimestamp)
+        let seconds_now = endTimestamp > fast.startTimestamp ? endTimestamp - fast.startTimestamp : 0
         let seconds_all = (fast.plannedEndTimestamp - fast.startTimestamp)
     
         let percent = seconds_now / seconds_all * 100
@@ -180,15 +181,25 @@ export default class FastimerCodeBlock {
 
         let timestamp1 = fast.startTimestamp
         let timestamp2 = fast.currentEndTimestamp == 0 ? endTimestamp : fast.currentEndTimestamp
-         
-        let difference = DateTime.timestampsDifference(timestamp1, timestamp2)
+
+        let difference = ""
         let postfix = ""
 
-        if (endTimestamp <= fast.plannedEndTimestamp) {
-            postfix = `remaining: **${DateTime.timestampsDifference(endTimestamp, fast.plannedEndTimestamp)}**`
+        if (timestamp1 <= timestamp2) {
+
+            difference = DateTime.timestampsDifference(timestamp1, timestamp2)
+            postfix = ""
+    
+            if (endTimestamp <= fast.plannedEndTimestamp) {
+                postfix = `remaining: **${DateTime.timestampsDifference(endTimestamp, fast.plannedEndTimestamp)}**`
+            }
+            else {
+                postfix = `extra: **${DateTime.timestampsDifference(fast.plannedEndTimestamp, endTimestamp)}**`
+            }
         }
         else {
-            postfix = `extra: **${DateTime.timestampsDifference(fast.plannedEndTimestamp, endTimestamp)}**`
+            difference = "0h 0m"
+            postfix = `remaining: **${fast.plannedLengthInHours}h**`
         }
 
         lines.push(`> ${prefix}Duration: **${difference}** (${postfix})`)
