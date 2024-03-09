@@ -191,7 +191,7 @@ export default class FastimerCodeBlock {
             postfix = ""
     
             if (endTimestamp <= fast.plannedEndTimestamp) {
-                postfix = `remaining: **${DateTime.timestampsDifference(endTimestamp, fast.plannedEndTimestamp)}**`
+                postfix = `left: **${DateTime.timestampsDifference(endTimestamp, fast.plannedEndTimestamp)}**`
             }
             else {
                 postfix = `extra: **${DateTime.timestampsDifference(fast.plannedEndTimestamp, endTimestamp)}**`
@@ -199,7 +199,7 @@ export default class FastimerCodeBlock {
         }
         else {
             difference = "0h 0m"
-            postfix = `remaining: **${fast.plannedLengthInHours}h**`
+            postfix = `left: **${fast.plannedLengthInHours}h**`
         }
 
         lines.push(`> ${prefix}Duration: **${difference}** (${postfix})`)
