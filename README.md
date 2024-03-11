@@ -22,7 +22,7 @@ Here is an example:
 
 Everything above updates when a block is being rendered. To trigger this, you can edit the block or reopen the note.
 
-To mark an active fast as finished, you can add the date and time of the moment to the same block. By the way, there is "Insert current date & time" command to do so.
+To mark an active fast as finished, you can add the date and time of the moment to the same block. There is "Insert current date & time" command to do so; you can use the "Insert current date" command of the core plugin Templates (if you prefer this way, do not forget to change the date format to `YYYY-MM-DD HH:mm`).
 
 ````
 ```fastimer
