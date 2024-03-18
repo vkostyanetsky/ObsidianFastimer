@@ -11,8 +11,6 @@ import {
     Fast,
     FastStatus
 } from '../types'
-import { DESTRUCTION } from 'dns';
-import { posix } from 'path';
 
 interface FastingZone {
     startTimestamp: number;
