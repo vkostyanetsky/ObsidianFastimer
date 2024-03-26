@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.2 - 2024-03-26
+
+### Added
+
+* "Show fasting zones" setting. It allows a user to hide fasting zones if they would like to.
+
 ## 1.2.1 - 2024-03-08
 
 ### Changed
