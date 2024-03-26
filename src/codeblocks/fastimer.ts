@@ -41,9 +41,12 @@ export default class FastimerCodeBlock {
 
             this.addFastProgressBar(lines, fast, endTimestamp)            
 
-            lines.push("> ")
+            if (plugin.settings.showFastingZones) {
 
-            this.addFastingZones(lines, fast, endTimestamp)
+                lines.push("> ")
+
+                this.addFastingZones(lines, fast, endTimestamp)                
+            }
         }
         
         MarkdownRenderer.render(plugin.app, lines.join("\n"), body, "", plugin)

@@ -7,10 +7,12 @@ import Fastimer from './main';
 
 export interface FastimerSettings {
 	regularFastLength: number;
+    showFastingZones: boolean;
 }
 
 export const DEFAULT_SETTINGS: FastimerSettings = {
-	regularFastLength: 16
+	regularFastLength: 16,
+    showFastingZones: true,
 }
 
 export class FastimerSettingTab extends PluginSettingTab {
@@ -40,5 +42,15 @@ export class FastimerSettingTab extends PluginSettingTab {
                     this.plugin.settings.regularFastLength = parsedValue;            
 					await this.plugin.saveSettings();
 				}));
+
+        new Setting(containerEl)
+            .setName('Show fasting zones')
+            .setDesc('Adds start dates of fasting zones to the code block.')
+            .addToggle(text => text
+                .setValue(this.plugin.settings.showFastingZones)
+                .onChange(async (value) => {
+                    this.plugin.settings.showFastingZones = value;
+                    await this.plugin.saveSettings();
+                }));                
 	}
 }
