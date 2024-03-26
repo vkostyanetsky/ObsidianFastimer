@@ -39,8 +39,6 @@ export default class FastsParser {
 
         this.fillFastStatus(fast)
 
-        console.log(fast)
-
         return fast;
     }    
 
