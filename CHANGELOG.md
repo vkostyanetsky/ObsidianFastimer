@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.3 - 2024-03-28
+
+### Changed
+
+* Code block titles are no longer shown in capital letters.
+
 ## 1.2.2 - 2024-03-26
 
 ### Added
