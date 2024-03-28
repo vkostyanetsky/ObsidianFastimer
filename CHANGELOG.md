@@ -2,6 +2,10 @@
 
 ## 1.2.3 - 2024-03-28
 
+### Added
+
+* "Show progress bar" setting. It allows a user to hide the progress bar if they would like to.
+
 ### Changed
 
 * Code block titles are no longer shown in capital letters.

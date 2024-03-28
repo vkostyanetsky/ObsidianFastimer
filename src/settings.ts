@@ -6,13 +6,15 @@ import {
 import Fastimer from './main';
 
 export interface FastimerSettings {
-	regularFastLength: number;
+	regularFastLength: number;    
     showFastingZones: boolean;
+    showProgressBar: boolean;
 }
 
 export const DEFAULT_SETTINGS: FastimerSettings = {
 	regularFastLength: 16,
     showFastingZones: true,
+    showProgressBar: true,
 }
 
 export class FastimerSettingTab extends PluginSettingTab {
@@ -52,5 +54,15 @@ export class FastimerSettingTab extends PluginSettingTab {
                     this.plugin.settings.showFastingZones = value;
                     await this.plugin.saveSettings();
                 }));                
+                
+        new Setting(containerEl)
+            .setName('Show progress bar')
+            .setDesc('Adds a visual representation of how much fasting time is left.')
+            .addToggle(text => text
+                .setValue(this.plugin.settings.showProgressBar)
+                .onChange(async (value) => {
+                    this.plugin.settings.showProgressBar = value;
+                    await this.plugin.saveSettings();
+                }));                                
 	}
 }

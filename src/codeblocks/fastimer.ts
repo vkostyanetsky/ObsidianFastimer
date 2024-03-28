@@ -30,21 +30,20 @@ export default class FastimerCodeBlock {
         if (fast.startTimestamp) {
 
             lines.push("> ")
-
             this.addStartAndEnd(lines, fast)
 
             lines.push("> ")
-
             this.addActualDuration(lines, fast, endTimestamp)
 
-            lines.push("> ")
+            if (plugin.settings.showProgressBar) {
 
-            this.addFastProgressBar(lines, fast, endTimestamp)            
+                lines.push("> ")
+                this.addFastProgressBar(lines, fast, endTimestamp)
+            }
 
             if (plugin.settings.showFastingZones) {
 
                 lines.push("> ")
-
                 this.addFastingZones(lines, fast, endTimestamp)                
             }
         }
