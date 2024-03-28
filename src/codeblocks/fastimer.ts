@@ -54,10 +54,10 @@ export default class FastimerCodeBlock {
     private static async addLineWithFastTitle(lines: string[], fast: Fast) {
         
         let text = new Map<FastStatus, string>([
-            [FastStatus.Inactive,  `> [!abstract] Inactive fast (${fast.plannedLengthInHours}H)`],
-            [FastStatus.Active,    `> [!summary] Active fast (${fast.plannedLengthInHours}H)`],
-            [FastStatus.Completed, `> [!success] Completed fast (${fast.plannedLengthInHours}H)`],
-            [FastStatus.Failed,    `> [!failure] Failed fast (${fast.plannedLengthInHours}H)`],
+            [FastStatus.Inactive,  `> [!abstract] Inactive fast (${fast.plannedLengthInHours}h)`],
+            [FastStatus.Active,    `> [!summary] Active fast (${fast.plannedLengthInHours}h)`],
+            [FastStatus.Completed, `> [!success] Completed fast (${fast.plannedLengthInHours}h)`],
+            [FastStatus.Failed,    `> [!failure] Failed fast (${fast.plannedLengthInHours}h)`],
         ]).get(fast.status);
 
         if (text === undefined) text = "<?>"
