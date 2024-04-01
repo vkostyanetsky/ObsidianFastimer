@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.4 - ?
+
+### Added
+
+* Groupings in plugin' settings.
+
 ## 1.2.3 - 2024-03-28
 
 ### Added

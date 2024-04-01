@@ -45,6 +45,8 @@ export class FastimerSettingTab extends PluginSettingTab {
 					await this.plugin.saveSettings();
 				}));
 
+        containerEl.createEl("h2", { text: "Appearance" });
+
         new Setting(containerEl)
             .setName('Show fasting zones')
             .setDesc('Adds start dates of fasting zones to the code block.')
