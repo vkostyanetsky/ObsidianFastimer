@@ -1,4 +1,4 @@
-# Fastimer ⌛ ⏲️ ⌚
+# Obsidian Fastimer ⌛ ⏲️ ⌚
 
 It is a plugin for [Obsidian](https://obsidian.md) designed to help you monitor your [fasting intervals](https://en.wikipedia.org/wiki/Intermittent_fasting).  
 
