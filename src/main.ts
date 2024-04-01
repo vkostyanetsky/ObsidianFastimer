@@ -32,7 +32,7 @@ export default class Fastimer extends Plugin {
 			name: 'Insert fasting tracker',
 			editorCallback: (editor: Editor, view: MarkdownView) => {
 
-                let startDate = DateTime.dateString(DateTime.now(), false)
+                const startDate = DateTime.dateString(DateTime.now(), false)
                 
 				editor.replaceSelection(`\`\`\`fastimer\n${startDate}\n\`\`\``);
 			}
@@ -43,7 +43,7 @@ export default class Fastimer extends Plugin {
 			name: 'Insert current date & time',
 			editorCallback: (editor: Editor, view: MarkdownView) => {
 
-                let startDate = DateTime.dateString(DateTime.now(), false)
+                const startDate = DateTime.dateString(DateTime.now(), false)
                 
 				editor.replaceSelection(startDate);
 			}
