@@ -1,4 +1,3 @@
-import { time } from "console"
 import { moment } from "obsidian"
 
 export default class DateTime {
@@ -36,8 +35,8 @@ export default class DateTime {
 
     private static relativeDateStrings() {
 
-        let result = new Map<string, string>([])
-                
+        const result = new Map<string, string>([])
+              
         result.set(this.shiftInDaysToString(-3), "3 days ago")
         result.set(this.shiftInDaysToString(-2), "2 days ago")
         result.set(this.shiftInDaysToString(-1), "yesterday")
@@ -62,7 +61,7 @@ export default class DateTime {
         return moment(dateMoment).format("YYYY-MM-DD")
     }
 
-    public static dateString(timestamp: number, relative: boolean = true) {
+    public static dateString(timestamp: number, relative = true) {
     
         const dateMoment = moment(new Date(timestamp))
 
@@ -81,9 +80,9 @@ export default class DateTime {
 
     public static timestampsDifference(timestamp1: number, timestamp2: number) {
         
-        let seconds = timestamp2 / 1000 - timestamp1 / 1000
-        let hours = Math.floor(seconds / 3600)
-        let minutes = Math.floor(
+        const seconds = timestamp2 / 1000 - timestamp1 / 1000
+        const hours = Math.floor(seconds / 3600)
+        const minutes = Math.floor(
             (seconds - (hours * 3600)) / 60
         )
     

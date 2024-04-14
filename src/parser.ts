@@ -43,29 +43,29 @@ export default class FastsParser {
     }    
 
     private static initFastFromContent(fast: Fast, content: string) {
-        let lines = content.split("\n");
+        const lines = content.split("\n");
 
         lines.forEach(line => {
 
             line = line.trim()
 
             if (line.match(/^\d*$/)) {
-                let value = parseInt(line)
+                const intValue = parseInt(line)
 
-                if (! isNaN(value) && fast.plannedLengthInHours == 0) {
-                    fast.plannedLengthInHours = value
+                if (! isNaN(intValue) && fast.plannedLengthInHours == 0) {
+                    fast.plannedLengthInHours = intValue
                 }
             }
             else if (line.match(/^\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}$/)) {
-                let value = Date.parse(line)
+                const dateValue = Date.parse(line)
 
-                if (! isNaN(value)) {
+                if (! isNaN(dateValue)) {
 
                     if (fast.startTimestamp == 0) {
-                        fast.startTimestamp = value
+                        fast.startTimestamp = dateValue
                     }
                     else if (fast.currentEndTimestamp == 0) {
-                        fast.currentEndTimestamp = value
+                        fast.currentEndTimestamp = dateValue
                     }                    
                 }
             }
@@ -92,7 +92,7 @@ export default class FastsParser {
 
     private static fillFastCurrentLength(fast: Fast) {
 
-        let finished = fast.currentEndTimestamp == 0 ? Date.now() : fast.currentEndTimestamp
+        const finished = fast.currentEndTimestamp == 0 ? Date.now() : fast.currentEndTimestamp
 
         fast.currentLength = finished - fast.startTimestamp
     }
