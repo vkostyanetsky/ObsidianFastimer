@@ -26,9 +26,7 @@ For example:
 ```
 ````
 
-The plugin takes the code block and shows elapsed time, remaining time, and something like a progress bar to visualize your spilled blood, sweat, and tears :)
-
-Here is an example:
+The plugin takes the code block and shows elapsed time, remaining time, and something like a progress bar to visualize your spilled blood, sweat, and tears :) For example, something like this:
 
 > Started **today, 18:50**; should be completed **tomorrow, 10:50**.
 > 
@@ -46,7 +44,7 @@ Here is an example:
 
 Everything above updates when a block is being rendered. To trigger this, you can edit the block or reopen the note.
 
-To mark an active fast as finished, you can add the date and time of the moment to the same block. There is "Insert current date & time" command to do so; you can use the "Insert current date" command of the core plugin Templates (if you prefer this way, do not forget to change the date format to `YYYY-MM-DD HH:mm`).
+To mark an active fast as finished, you can add the date and time of the moment to the same block. There is still "Insert current date & time" command to do so. In addition, you can also use the "Insert current date" command of the core plugin Templates (if you prefer this way, do not forget to change the date format to `YYYY-MM-DD HH:mm`).
 
 ````
 ```fastimer
