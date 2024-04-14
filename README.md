@@ -6,9 +6,19 @@ It is a plugin for [Obsidian](https://obsidian.md) designed to help you monitor 
 
 ## 🙂 How to use it?
 
-The idea is simple: when you start a new fast and want to track it, you add a `fastimer` code block. In the block, you set a date and time when you started. You can do this using "Insert fasting tracker" command or manually.
+The idea is simple: when you start a new fast and want to track it, you add a `fastimer` code block. You can do this using "Insert fasting tracker" command or manually.
 
-For instance:
+For example:
+
+````
+```fastimer
+
+```
+````
+
+In the block, you set a date and time of the moment when you started. Again, you can do this using "Insert current date & time" command or manually.
+
+For example:
 
 ````
 ```fastimer
@@ -20,7 +30,19 @@ The plugin takes the code block and shows elapsed time, remaining time, and some
 
 Here is an example:
 
-![Example](img/example-fast.png)
+> Started **today, 18:50**; should be completed **tomorrow, 10:50**.
+> 
+> Duration: **50m** (left: **15h 9m**)
+> 
+> `##------------------------------------- 5%`
+> 
+> Fasting zones:
+> 
+> 1. Anabolic zone started today, 18:34 ← you are here
+> 2. Catabolic zone will start today, 22:34
+> 3. Fat burning zone will start tomorrow, 10:34
+> 4. Ketosis zone will start tomorrow, 18:34
+> 5. Deep ketosis zone will start 3 days later, 18:34
 
 Everything above updates when a block is being rendered. To trigger this, you can edit the block or reopen the note.
 
