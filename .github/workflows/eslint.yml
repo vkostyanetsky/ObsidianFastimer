@@ -1,21 +1,12 @@
 name: ESLint
 
-on:
-    push:
-        branches:
-            - main
-
+on: push
 jobs:
-    eslint:
-      name: eslint
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v1
-      - name: install node v20
-        uses: actions/setup-node@v1
-        with:
-          node-version: 20
-      - name: yarn install
-        run: yarn install
-      - name: eslint
-        uses: icrawl/action-eslint@v1
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: yarn
+    - name: Run ESLint
+      run: eslint . --ext .js,.jsx,.ts,.tsx
