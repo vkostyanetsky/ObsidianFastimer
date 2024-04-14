@@ -22,8 +22,8 @@ export default class FastimerCodeBlock {
 
     public static async renderFast(plugin: Fastimer, fast: Fast, body: HTMLElement, ctx: MarkdownPostProcessorContext) 
     {
-        let endTimestamp = fast.currentEndTimestamp > 0 ? fast.currentEndTimestamp : DateTime.now()
-        let lines: string[] = []
+        const endTimestamp = fast.currentEndTimestamp > 0 ? fast.currentEndTimestamp : DateTime.now()
+        const lines: string[] = []
         
         this.addLineWithFastTitle(lines, fast)
 
@@ -80,39 +80,39 @@ export default class FastimerCodeBlock {
 
         // Calculating start timestamps:
 
-        let anabolicZoneTimestamp = fast.startTimestamp
-        let catabolicZoneTimestamp = anabolicZoneTimestamp + DateTime.HoursToMs(4)
-        let fatBurningZoneTimestamp = catabolicZoneTimestamp + DateTime.HoursToMs(12)
-        let ketosisZoneTimestamp = fatBurningZoneTimestamp + DateTime.HoursToMs(8)
-        let deepKetosisZoneTimestamp = ketosisZoneTimestamp + DateTime.HoursToMs(48)
+        const anabolicZoneTimestamp = fast.startTimestamp
+        const catabolicZoneTimestamp = anabolicZoneTimestamp + DateTime.HoursToMs(4)
+        const fatBurningZoneTimestamp = catabolicZoneTimestamp + DateTime.HoursToMs(12)
+        const ketosisZoneTimestamp = fatBurningZoneTimestamp + DateTime.HoursToMs(8)
+        const deepKetosisZoneTimestamp = ketosisZoneTimestamp + DateTime.HoursToMs(48)
 
         // Creating zones:
 
-        let anabolicZone: FastingZone = {
+        const anabolicZone: FastingZone = {
             startTimestamp: anabolicZoneTimestamp,
             endTimestamp: catabolicZoneTimestamp - 1,
             title: "1. Anabolic",
         }
 
-        let catabolicZone: FastingZone = {
+        const catabolicZone: FastingZone = {
             startTimestamp: catabolicZoneTimestamp,
             endTimestamp: fatBurningZoneTimestamp - 1,
             title: "2. Catabolic"
         }
 
-        let fatBurningZone: FastingZone = {
+        const fatBurningZone: FastingZone = {
             startTimestamp: fatBurningZoneTimestamp,
             endTimestamp: ketosisZoneTimestamp - 1,
             title: "3. Fat burning"
         }
 
-        let ketosisZone: FastingZone = {
+        const ketosisZone: FastingZone = {
             startTimestamp: ketosisZoneTimestamp,
             endTimestamp: deepKetosisZoneTimestamp - 1,
             title: "4. Ketosis"
         }
 
-        let deepKetosisZone: FastingZone = {
+        const deepKetosisZone: FastingZone = {
             startTimestamp: deepKetosisZoneTimestamp,
             endTimestamp: 0,
             title: "5. Deep ketosis"
@@ -132,12 +132,12 @@ export default class FastimerCodeBlock {
 
     private static addFastingZone(lines: string[], fast: Fast, zone: FastingZone, endTimestamp: number) {
 
-        let note_text = fast.currentEndTimestamp > 0 ? " **← you were here**" : " **← you are here**"
-        let note = 
+        const noteText = fast.currentEndTimestamp > 0 ? " **← you were here**" : " **← you are here**"
+        const note = 
             endTimestamp >= zone.startTimestamp 
             && 
             (endTimestamp < zone.endTimestamp || zone.endTimestamp == 0)
-            ? note_text
+            ? noteText
             : ""
 
         const from = DateTime.dateString(zone.startTimestamp)
@@ -151,19 +151,19 @@ export default class FastimerCodeBlock {
 
     private static async addFastProgressBar(lines: string[], fast: Fast, endTimestamp: number) {
 
-        let seconds_now = endTimestamp > fast.startTimestamp ? endTimestamp - fast.startTimestamp : 0
-        let seconds_all = (fast.plannedEndTimestamp - fast.startTimestamp)
+        const secondsNow = endTimestamp > fast.startTimestamp ? endTimestamp - fast.startTimestamp : 0
+        const secondsAll = (fast.plannedEndTimestamp - fast.startTimestamp)
     
-        let percent = seconds_now / seconds_all * 100
+        const percent = secondsNow / secondsAll * 100
     
-        let done_len = percent / 2.5
-        done_len = done_len < 40 ? done_len : 40
+        let doneLen = percent / 2.5
+        doneLen = doneLen < 40 ? doneLen : 40
             
-        let left_len = 40 - done_len
+        const leftLen = 40 - doneLen
     
-        let left = "-".repeat(left_len)
-        let done = "#".repeat(done_len)
-        let tail = Math.floor(percent)
+        const left = "-".repeat(leftLen)
+        const done = "#".repeat(doneLen)
+        const tail = Math.floor(percent)
     
         lines.push(`> \`${done}${left}\` ${tail}%`)
     }
@@ -179,8 +179,8 @@ export default class FastimerCodeBlock {
             prefix = `Completed **${endDate}**. `
         }
 
-        let timestamp1 = fast.startTimestamp
-        let timestamp2 = fast.currentEndTimestamp == 0 ? endTimestamp : fast.currentEndTimestamp
+        const timestamp1 = fast.startTimestamp
+        const timestamp2 = fast.currentEndTimestamp == 0 ? endTimestamp : fast.currentEndTimestamp
 
         let difference = ""
         let postfix = ""
