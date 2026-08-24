@@ -1,6 +1,6 @@
 # Obsidian Fastimer ⏱️ 🍔 🍺
 
-[![ESLint](https://github.com/vkostyanetsky/ObsidianFastimer/actions/workflows/eslint.yml/badge.svg)](https://github.com/vkostyanetsky/ObsidianFastimer/actions/workflows/eslint.yml)
+[![CI](https://github.com/vkostyanetsky/ObsidianFastimer/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/vkostyanetsky/ObsidianFastimer/actions/workflows/ci.yml)
 
 It is a plugin for [Obsidian](https://obsidian.md) designed to help you monitor your [fasting intervals](https://en.wikipedia.org/wiki/Intermittent_fasting).  
 
